@@ -13,15 +13,18 @@ import java.util.*;
 import java.util.Random;
 import java.lang.Object.*;
 
-interface Character{
+public class Character{
 	public int hP;
 	public int sP;
 
 
 
-
+	public Character(int hP, int sP){
+		this.hP = hP;
+		this.sP = sP;
+	}
 	public Character dia(){
-		return new Character(this.hP + 50, this.sP - 30, this.personaMoves);
+		return new Character(this.hP + 50, this.sP - 4);
 	}
 
 	public Ally healAlly(Ally ally, int x){

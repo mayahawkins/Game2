@@ -11,12 +11,15 @@ import java.util.*;
 import java.util.Random;
 import java.lang.Object.*;
 
-class ItemMode extends World{
+public class ItemMode extends World{
 	public FiniteBags itembag;
 	public int protagHP;
 	public int protagSP;
 	public int elizabethHP;
 	public int koromaruHP;
+	public World prevWorld;
+
+
 
 
 

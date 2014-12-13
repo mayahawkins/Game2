@@ -11,10 +11,28 @@ import java.util.*;
 import java.util.Random;
 import java.lang.Object.*;
 
-class Ally{
+public class Ally{
 	private int allyOneHP;
 	private int allyTwoHP;
-	private int allyOneSP;
-	private int allyTwoSP;
+
+	public Ally(int allyOneHP, int allyTwoHP){
+		this.allyOneHP = allyOneHP;
+		this.allyTwoHP = allyTwoHP;
+	}
+
+
+	public Character playerHeal(player){
+		return new Character(this.hP + 50, this.sP);
+	}
+
+	public Ally healAlly(Ally ally, int x){
+		if(x == 1){
+		return new Ally(allyOneHP + 50, allyTwoHP, allyOneSP, allyTwoSP);
+		}
+		else{
+			return new Ally(allyOneHP, allyTwoHP + 50, allyOneSP, allyTwoSP);
+		}
+	}
+
 
 }
