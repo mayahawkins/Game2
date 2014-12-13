@@ -1,6 +1,15 @@
 package Game2;
-
-
+import javalib.funworld.*;
+import javalib.worldimages.*;
+import javalib.worldcanvas.*;
+import javalib.colors.*;
+import java.io.*;
+import java.util.*;
+import java.awt.Color;
+import java.awt.geom.*;
+import java.util.*;
+import java.util.Random;
+import java.lang.Object.*;
 
 class CharacterInMaze{
 	public Posn pinhole;
@@ -8,14 +17,15 @@ class CharacterInMaze{
 	public int length;
 	public Picture pic;
 	public Posn direction;
-	public ArrayList items;
+	public List itembag;
 
-	public CharacterInMaze(Posn pinhole, int width, int length, Picture pic, Posn direction){
+	public CharacterInMaze(Posn pinhole, int width, int length, Picture pic, Posn direction, ArrayList itembag){
 		this.pinhole = pinhole;
 		this.width = width;
 		this.length = length;
 		this.pic = pic;
 		this.direction = direction;
+		this.itembag = itembag;
 	}
 
 
@@ -67,6 +77,6 @@ class CharacterInMaze{
 	}
 
 	public CharacterInMaze charPlacer(int x, int y) {
-		return new CharacterInMaze(new Posn(x, y), this.width, this.length, this.pic, this.direction);
+		return new CharacterInMaze(new Posn(x, y), this.width, this.length, this.pic, new Posn(0, 0), this.item);
 	}
 }
