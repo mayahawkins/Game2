@@ -18,7 +18,7 @@ class Shadow{
 	public Posn pinhole;
 	public int width;
 	public int length;
-	public Picture pic;
+	public FromFileImage pic;
 	public Posn direction;
 	public int walkCounter;
 	

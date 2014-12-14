@@ -25,7 +25,7 @@ public class Ally{
 		return new Character(this.hP + 50, this.sP);
 	}
 
-	public Ally healAlly(Ally ally, int x){
+	public Ally allyHeal(int x){
 		if(x == 1){
 		return new Ally(allyOneHP + 50, allyTwoHP, allyOneSP, allyTwoSP);
 		}

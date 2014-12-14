@@ -14,67 +14,67 @@ import java.lang.Object.*;
 class CharacterInMaze{
 	public Posn pinhole;
 	public int width;
-	public int length;
-	public Picture pic;
+	public int height;
+	public WorldImage pic;
 	public Posn direction;
-	public List itembag;
+	public FiniteBags itembag;
+	public String protagFileName = "MaleProtag";
 
-	public CharacterInMaze(Posn pinhole, int width, int length, Picture pic, Posn direction, ArrayList itembag){
+	public CharacterInMaze(Posn pinhole, WorldImage pic, Posn direction, FiniteBags itembag){
 		this.pinhole = pinhole;
-		this.width = width;
-		this.length = length;
-		this.pic = pic;
+		this.pic = new FromFileImage(pinhole, protagFileName);
+		this.width = pic.getWidth();
+		this.height = pic.getHeight();
 		this.direction = direction;
-		this.itembag = itembag;
+		this.itembag = itembag;	
 	}
 
-
-	public WorldImage Image(){
-		return new RectangleImage(this.pinhole, this.width, this.length, this.pic, this.direction);
+	public WorldImage characterInMazeImage(){
+		return pic.getMovedTo(pinhole);
 	}
 
 	public CharacterInMaze moveChar(String ke){
 	 	if (ke.equals("right") && (this.pinhole.x + (this.width / 2) <= 500)){
 	 		return new CharacterInMaze(new Posn(this.pinhole.x + 5, this.pinhole.y),
-	 			this.width, this.length, this.pic, new Posn(1, 0));
+	 			 new Posn(1, 0), new FromFileImage(new Posn(this.pinhole.x + 5, this.pinhole.y));
 	 	}
 	 	else if (ke.equals("left") && (this.pinhole.x - (this.width / 2) >= 0)){
 	 		return new CharacterInMaze(new Posn(this.pinhole.x - 5, this.pinhole.y),
-	 			this.width, this.length, this.pic, new Posn(-1, 0));
+	 			this.pic, new Posn(-1, 0) this.itembag);
 	 	}
 	 	else if (ke.equals("up") && (this.pinhole.y - (this.length / 2) >= 0)){
 	 		return new CharacterInMaze(new Posn(this.pinhole.x, this.pinhole.y - 5),
-	 			this.width, this.length, this.pic, new Posn(0, -1));
+	 			this.pic, new Posn(0, -1) this.itembag);
 	 	}
 	 	else if (ke.equals("down") && (this.pinhole.y + this.length / 2) <= 500){
 	 		return new CharacterInMaze(new Posn(this.pinhole.x, this.pinhole.y + 5),
-	 			this.width, this.length, this.pic, new Posn(0, 1));
+	 			this.width, this.length, this.pic, new Posn(0, 1) this.itembag);
 	 	}
 	 	else {
 	 		return this;
 	 	}
 	}
 
-	public CharacterInMaze charImageChange(){
-		if(this.direction.x == -1){
-			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
-		}
-		else if(this.direction.x == 1){
-			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
-		}
-		else if(this.direction.y == -1){
-			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
-		}
-		else if(this.direction.y == 1){
-			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
-		}
-		else if(this.direction.x == 0 && this.direction.x == 0){
-			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
-		}
-		else{
-			return this;
-		}
-	}
+//	public CharacterInMaze charImageChange(){
+//		if(this.direction.x == -1){
+//			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
+//		}
+//		else if(this.direction.x == 1){
+//			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
+//		}
+//		else if(this.direction.y == -1){
+//			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
+//		}
+//		else if(this.direction.y == 1){
+///			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
+//		}
+//		else if(this.direction.x == 0 && this.direction.x == 0){
+//			return new CharacterInMaze(this.pinhole, this.width, this.length, this.pic, this.direction);
+//		}
+//		else{
+//			return this;
+//		}
+//	}
 
 	public CharacterInMaze charPlacer(int x, int y) {
 		return new CharacterInMaze(new Posn(x, y), this.width, this.length, this.pic, new Posn(0, 0), this.item);
